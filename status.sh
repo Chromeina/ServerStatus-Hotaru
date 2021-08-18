@@ -1323,7 +1323,7 @@ menu_server() {
 ————————————
  ${Green_font_prefix} 7.${Font_color_suffix} 設定 伺服器端設定
  ${Green_font_prefix} 8.${Font_color_suffix} 查看 伺服器端訊息
- ${Green_font_prefix} 9.${Font_color_suffix} 查看 伺服器端設定
+ ${Green_font_prefix} 9.${Font_color_suffix} 查看 伺服器端紀錄
 ————————————
  ${Green_font_prefix}10.${Font_color_suffix} 切換為 客戶端目錄" && echo
   if [[ -e "${server_file}/sergate" ]]; then
