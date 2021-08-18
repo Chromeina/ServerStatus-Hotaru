@@ -85,7 +85,7 @@ check_region() {
 }
 Download_Server_Status_server() {
   cd "/tmp" || exit 1
-  [[ ${mirror_num} == 2 ]] && bundle_link="https://cokemine.coding.net/p/hotarunet/d/ServerStatus-Hotaru/git/archive/master/?download=true" || bundle_link="https://github.com/Chromeina/ServerStatus-Hotaru/archive/master.zip"
+  [[ ${mirror_num} == 2 ]] && bundle_link="https://cokemine.coding.net/p/hotarunet/d/ServerStatus-Hotaru/git/archive/master/?download=true" || bundle_link="https://github.com/cokemine/ServerStatus-Hotaru/archive/master.zip"
   wget -N --no-check-certificate "${bundle_link}" -O "master.zip"
   [[ ! -e "master.zip" ]] && echo -e "${Error} ServerStatus 伺服器端下載失敗 !" && exit 1
   unzip master.zip
