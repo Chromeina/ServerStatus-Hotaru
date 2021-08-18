@@ -212,7 +212,7 @@ Service_Server_Status_client() {
     cat >/usr/lib/systemd/system/status-client.service <<-EOF
 [Unit]
 Description=StatusClient
-Documentation=https://github.com/cokemine/ServerStatus-Hotaru
+Documentation=https://github.com/Chromeina/ServerStatus-Hotaru
 After=network.target
 [Service]
 ExecStart=/etc/init.d/status-client start
