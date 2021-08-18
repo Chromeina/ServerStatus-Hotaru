@@ -30,7 +30,7 @@ If some of the assets used in this repo infringe your copyright, please contact 
 服务端：
 
 ```bash
-wget https://raw.githubusercontent.com/cokemine/ServerStatus-Hotaru/master/status.sh
+wget https://raw.githubusercontent.com/Chromeina/ServerStatus-Hotaru/master/status.sh
 # wget https://cokemine.coding.net/p/hotarunet/d/ServerStatus-Hotaru/git/raw/master/status.sh 若服务器位于中国大陆建议选择Coding.net仓库
 bash status.sh s
 ```
@@ -68,7 +68,7 @@ bash status.sh c
 mkdir -p /usr/local/ServerStatus/server
 apt install wget unzip curl vim build-essential
 cd /tmp
-wget https://github.com/cokemine/ServerStatus-Hotaru/archive/master.zip
+wget https://github.com/Chromeina/ServerStatus-Hotaru/archive/master.zip
 unzip master.zip
 cd ./ServerStatus-Hotaru-master/server
 make #编译生成二进制文件
@@ -76,7 +76,7 @@ chmod +x sergate
 mv sergate /usr/local/ServerStatus/server
 vim /usr/local/ServerStatus/server/config.json #修改配置文件
 #下载前端
-cd /tmp && wget https://github.com/cokemine/Hotaru_theme/releases/latest/download/hotaru-theme.zip
+cd /tmp && wget https://github.com/Chromeina/Hotaru_theme/releases/latest/download/hotaru-theme.zip
 unzip hotaru-theme.zip
 mv ./hotaru-theme /usr/local/ServerStatus/web #此为站点根目录，请自行设置
 nohup ./sergate --config=config.json --web-dir=/usr/local/ServerStatus/web --port=35601 > /tmp/serverstatus_server.log 2>&1 & #默认端口35601
@@ -88,7 +88,7 @@ nohup ./sergate --config=config.json --web-dir=/usr/local/ServerStatus/web --por
 
 ```bash
 rm -rf /usr/local/ServerStatus/web/*
-wget "https://github.com/cokemine/Hotaru_theme/releases/download/latest/hotaru-theme.zip"
+wget "https://github.com/Chromeina/Hotaru_theme/releases/download/latest/hotaru-theme.zip"
 unzip hotaru-theme.zip
 mv ./hotaru-theme/* /usr/local/ServerStatus/web/
 service status-server restart
@@ -123,7 +123,7 @@ Linux版客户端支持绝大部分Linux发行版系统，一般不需要使用`
 ```bash
 apt install python3 python3-pip wget
 pip3 install psutil
-wget https://raw.githubusercontent.com/cokemine/ServerStatus-Hotaru/master/clients/status-psutil.py
+wget https://raw.githubusercontent.com/Chromeina/ServerStatus-Hotaru/master/clients/status-psutil.py
 vim status-psutil.py #修改客户端配置文件
 python3 status-psutil.py
 # https://raw.githubusercontent.com/cokemine/ServerStatus-Hotaru/master/clients/status-client.py 默认版本无需psutil依赖
