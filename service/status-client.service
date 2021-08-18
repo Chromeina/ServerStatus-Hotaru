@@ -1,6 +1,6 @@
 [Unit]
 Description=ServerStatus-Client
-Documentation=https://github.com/cokemine/ServerStatus-Hotaru
+Documentation=https://github.com/Chromeina/ServerStatus-Hotaru
 After=network.target
 [Service]
 ExecStart=/usr/bin/python3 /usr/local/ServerStatus/client/status-client.py

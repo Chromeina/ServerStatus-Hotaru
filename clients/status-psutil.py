@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Update by: https://github.com/CokeMine/ServerStatus-Hotaru
-# 依赖于psutil跨平台库：
-# 支持Python版本：2.6 to 3.7
-# 支持操作系统： Linux, Windows, OSX, Sun Solaris, FreeBSD, OpenBSD and NetBSD, both 32-bit and 64-bit architectures
+# 依賴於psutil跨平台資料庫：
+# 支援Python版本：2.6 to 3.7
+# 支援作業系統： Linux, Windows, OSX, Sun Solaris, FreeBSD, OpenBSD and NetBSD, both 32-bit and 64-bit architectures
 
 import socket
 import time
@@ -14,7 +14,7 @@ SERVER = "127.0.0.1"
 PORT = 35601
 USER = "USER"
 PASSWORD = "USER_PASSWORD"
-INTERVAL = 1  # 更新间隔，单位：秒
+INTERVAL = 1  # 更新間隔，單位:秒
 
 
 def check_interface(net_name):

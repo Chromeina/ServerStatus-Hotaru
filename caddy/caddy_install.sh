@@ -12,9 +12,9 @@ file="/usr/local/caddy/"
 caddy_file="/usr/local/caddy/caddy"
 caddy_conf_file="/usr/local/caddy/Caddyfile"
 Info_font_prefix="\033[32m" && Error_font_prefix="\033[31m" && Font_suffix="\033[0m" && Red_font_prefix="\033[31m" && Font_color_suffix="\033[0m" && Green_background_prefix="\033[42;37m"
-Error="${Red_font_prefix}[错误]${Font_color_suffix}"
+Error="${Red_font_prefix}[錯誤]${Font_color_suffix}"
 check_root() {
-  [[ $EUID != 0 ]] && echo -e "${Error} 当前非ROOT账号(或没有ROOT权限)，无法继续操作，请更换ROOT账号或使用 ${Green_background_prefix}sudo su${Font_color_suffix} 命令获取临时ROOT权限（执行后可能会提示输入当前账号的密码）。" && exit 1
+  [[ $EUID != 0 ]] && echo -e "${Error} 當前非ROOT帳號(或沒有ROOT權限)，無法繼續操作，請更換ROOT帳號或使用 ${Green_background_prefix}sudo su${Font_color_suffix} 命令臨時取得ROOT權限（執行後可能會要求輸入當前帳號的密碼）。" && exit 1
 }
 check_sys() {
   if [[ -f /etc/redhat-release ]]; then
@@ -35,7 +35,7 @@ check_sys() {
   bit=$(uname -m)
 }
 check_installed_status() {
-  [[ ! -e ${caddy_file} ]] && echo -e "${Error_font_prefix}[错误]${Font_suffix} Caddy 没有安装，请检查 !" && exit 1
+  [[ ! -e ${caddy_file} ]] && echo -e "${Error_font_prefix}[錯誤]${Font_suffix} Caddy 沒有安裝，請檢查 !" && exit 1
 }
 Download_caddy() {
   [[ ! -e ${file} ]] && mkdir "${file}"
@@ -52,22 +52,22 @@ Download_caddy() {
   elif [[ ${bit} == "arm64" || ${bit} == "aarch64" ]]; then
     wget --no-check-certificate -O "caddy" "https://github.com/CokeMine/Caddy_Linux/releases/latest/download/caddy_v2_linux_arm64"
   else
-    echo -e "${Error_font_prefix}[错误]${Font_suffix} 不支持 [${bit}] ! 请向本站反馈[]中的名称，我会看看是否可以添加支持。" && exit 1
+    echo -e "${Error_font_prefix}[錯誤]${Font_suffix} 不支援 [${bit}] ! 請向本網站反應[]中的名稱，我會看看是否能添加支援。" && exit 1
   fi
-  [[ ! -e "caddy" ]] && echo -e "${Error_font_prefix}[错误]${Font_suffix} Caddy 下载失败 !" && exit 1
+  [[ ! -e "caddy" ]] && echo -e "${Error_font_prefix}[錯誤]${Font_suffix} Caddy 下載失敗 !" && exit 1
   chmod +x caddy
 }
 Service_caddy() {
   if [[ ${release} == "centos" ]]; then
     if ! wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/caddy/caddy_centos -O /etc/init.d/caddy; then
-      echo -e "${Error_font_prefix}[错误]${Font_suffix} Caddy服务 管理脚本下载失败 !" && exit 1
+      echo -e "${Error_font_prefix}[錯誤]${Font_suffix} Caddy服務 管理腳本下載失敗 !" && exit 1
     fi
     chmod +x /etc/init.d/caddy
     chkconfig --add caddy
     chkconfig caddy on
   else
     if ! wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/caddy/caddy_debian -O /etc/init.d/caddy; then
-      echo -e "${Error_font_prefix}[错误]${Font_suffix} Caddy服务 管理脚本下载失败 !" && exit 1
+      echo -e "${Error_font_prefix}[錯誤]${Font_suffix} Caddy服務 管理腳本下載失敗 !" && exit 1
     fi
     chmod +x /etc/init.d/caddy
     update-rc.d -f caddy defaults
@@ -76,8 +76,8 @@ Service_caddy() {
 install_caddy() {
   check_root
   if [[ -e ${caddy_file} ]]; then
-    echo && echo -e "${Error_font_prefix}[信息]${Font_suffix} 检测到 Caddy 已安装，是否继续安装(覆盖更新)？[y/N]"
-    read -rep "(默认: n):" yn
+    echo && echo -e "${Error_font_prefix}[訊息]${Font_suffix} 偵測到 Caddy 已安裝，是否繼續安裝(覆蓋更新)？[y/N]"
+    read -rep "(預設: n):" yn
     [[ -z ${yn} ]] && yn="n"
     if [[ ${yn} == [Nn] ]]; then
       echo && echo "已取消..." && exit 1
@@ -86,15 +86,15 @@ install_caddy() {
   Download_caddy
   Service_caddy
   echo && echo -e " Caddy 使用命令：${caddy_conf_file}
- 日志文件：cat /tmp/caddy.log
- 使用说明：service caddy start | stop | restart | status
+ 紀錄文件：cat /tmp/caddy.log
+ 使用說明：service caddy start | stop | restart | status
  或者使用：/etc/init.d/caddy start | stop | restart | status
- ${Info_font_prefix}[信息]${Font_suffix} Caddy 安装完成！" && echo
+ ${Info_font_prefix}[訊息]${Font_suffix} Caddy 安裝完成！" && echo
 }
 uninstall_caddy() {
   check_installed_status
-  echo && echo "确定要卸载 Caddy ? [y/N]"
-  read -rep "(默认: n):" unyn
+  echo && echo "確定要移除 Caddy ? [y/N]"
+  read -rep "(預設: n):" unyn
   [[ -z ${unyn} ]] && unyn="n"
   if [[ ${unyn} == [Yy] ]]; then
     PID=$(ps -ef | grep "caddy" | grep -v "grep" | grep -v "init.d" | grep -v "service" | grep -v "caddy_install" | awk '{print $2}')
@@ -108,10 +108,10 @@ uninstall_caddy() {
     rm -rf ${caddy_file}
     rm -rf ${caddy_conf_file}
     rm -rf /etc/init.d/caddy
-    [[ ! -e ${caddy_file} ]] && echo && echo -e "${Info_font_prefix}[信息]${Font_suffix} Caddy 卸载完成 !" && echo && exit 1
-    echo && echo -e "${Error_font_prefix}[错误]${Font_suffix} Caddy 卸载失败 !" && echo
+    [[ ! -e ${caddy_file} ]] && echo && echo -e "${Info_font_prefix}[訊息]${Font_suffix} Caddy 移除完成 !" && echo && exit 1
+    echo && echo -e "${Error_font_prefix}[錯誤]${Font_suffix} Caddy 移除失敗 !" && echo
   else
-    echo && echo "卸载已取消..." && echo
+    echo && echo "移除已取消..." && echo
   fi
 }
 check_sys
@@ -123,7 +123,7 @@ install | uninstall)
   ${action}_caddy
   ;;
 *)
-  echo "输入错误 !"
-  echo "用法: {install | uninstall}"
+  echo "輸入錯誤 !"
+  echo "使用方法: {install | uninstall}"
   ;;
 esac

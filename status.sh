@@ -51,7 +51,7 @@ check_sys() {
   elif grep -q -E -i "Arch|Manjaro" /etc/issue; then
     release="archlinux"
   else
-    echo -e 'ServerStatus 暫時不支援此Linux版本'
+    echo -e 'ServerStatus 暫時不支援此Linux發行版本'
   fi
   bit=$(uname -m)
 }
