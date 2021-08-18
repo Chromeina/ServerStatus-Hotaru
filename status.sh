@@ -1122,7 +1122,7 @@ Restart_ServerStatus_client() {
 }
 Uninstall_ServerStatus_client() {
   check_installed_client_status
-  echo "確定要移除 ServerStatus 客戶端(伺服器端，則只會刪除客戶端) ? [y/N]"
+  echo "確定要移除 ServerStatus 客戶端(如果同時安裝了伺服器端，則只會刪除客戶端) ? [y/N]"
   echo
   read -erp "(預設: n):" unyn
   [[ -z ${unyn} ]] && unyn="n"
