@@ -736,7 +736,7 @@ Install_jq() {
     echo -e "${Info} JQ解析器 已安裝，繼續..."
   fi
   if [[ ! -e ${region_json} ]]; then
-    wget --no-check-certificate "https://raw.githubusercontent.com/michaelwittig/node-i18n-iso-countries/master/langs/zh.json" -O ${region_json}
+    wget --no-check-certificate "https://raw.githubusercontent.com/wwwtony5488/node-i18n-iso-countries/master/langs/tw.json" -O ${region_json}
     [[ ! -e ${region_json} ]] && echo -e "${Error} ISO 3166-1 json文件下載失敗，請檢查！" && exit 1
   fi
 }
